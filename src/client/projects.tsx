@@ -21,6 +21,12 @@ function ProjectElement({columns, now, project}: {columns: number, now: number, 
       {project.url && <a href={`${project.url}/pipelines`} target="_blank" rel="noopener noreferrer">{project.name}</a>}
       {!project.url && project.name}
     </h2>
+    {project.pipelines.map((pipeline) => {
+      return <div>
+        <Stages stages={pipeline.stages} maxNonFailedJobsVisible={project.maxNonFailedJobsVisible}/>
+        <Info now={now} pipeline={pipeline}/>
+      </div>
+    })}
     <Stages stages={pipeline.stages} maxNonFailedJobsVisible={project.maxNonFailedJobsVisible}/>
     <Info now={now} pipeline={pipeline}/>
   </li>
