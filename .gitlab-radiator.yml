@@ -1,0 +1,15 @@
+gitlabs:
+  -
+    access-token: YOURGITLABACCESSTOKEN
+    url: https://gitlab.com
+    projects:
+      exclude: .*/.*-inactive-project
+      excludePipelineStatus: ['canceled', 'pending']
+    maxNonFailedJobsVisible: 3
+projectsOrder: ['status', 'name']
+interval: 30
+port: 8000
+zoom: 0.50
+columns: 4
+colors:
+  success-background: 'rgb(0,255,0)'

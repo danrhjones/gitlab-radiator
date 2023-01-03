@@ -11,8 +11,8 @@
     "gitlab-radiator": "bin/gitlab-radiator"
   },
   "scripts": {
-    "build": "./build-npm",
-    "start": "babel-node src/app.js",
+    "build": "babel src -d build",
+    "start": "node /usr/src/app/build/app.js",
     "eslint": "eslint --fix src/* bin/* test/*",
     "test": "mocha --require @babel/register --timeout 20000 test/*.js test/**/*.js"
   },
