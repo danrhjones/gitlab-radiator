@@ -16,6 +16,7 @@ config.projectsOrder = config.projectsOrder || ['name']
 config.gitlabs = config.gitlabs.map((gitlab) => {
   return {
     url: gitlab.url,
+    numberOfPipelines: Number(gitlab.numberOfPipelines || 3),
     ignoreArchived: gitlab.ignoreArchived === undefined ? true : gitlab.ignoreArchived,
     maxNonFailedJobsVisible: Number(gitlab.maxNonFailedJobsVisible || 999999),
     ca: gitlab.caFile && fs.existsSync(gitlab.caFile, 'utf-8') ? fs.readFileSync(gitlab.caFile) : undefined,

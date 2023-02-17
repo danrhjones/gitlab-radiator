@@ -23,16 +23,16 @@ async function fetchLatestAndMasterPipeline(projectId, config) {
   if (pipelines.length === 0) {
     return []
   }
-  const latestPipeline = _.take(pipelines, 1)
+  const latestPipeline = _.take(pipelines, config.numberOfPipelines)
   if (latestPipeline[0].ref === 'master') {
     return latestPipeline
   }
-  const latestMasterPipeline = _(pipelines).filter({ref: 'master'}).take(1).value()
+  const latestMasterPipeline = _(pipelines).filter({ref: 'master'}).take(config.numberOfPipelines).value()
   if (latestMasterPipeline.length > 0) {
     return latestPipeline.concat(latestMasterPipeline)
   }
   const masterPipelines = await fetchPipelines(projectId, config, {per_page: 50, ref: 'master'})
-  return latestPipeline.concat(_.take(masterPipelines, 1))
+  return latestPipeline.concat(0, 10)
 }
 
 async function fetchPipelines(projectId, config, options) {
